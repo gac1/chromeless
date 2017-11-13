@@ -223,10 +223,16 @@ export interface PdfOptions {
   pageRanges?: string
   ignoreInvalidPageRanges?: boolean
   filePath?: string // for internal use
+  s3Options?: {
+    filename ?: string
+  }
 }
 
 export interface ScreenshotOptions {
   filePath?: string
+  s3Options?: {
+    filename ?: string
+  }
 }
 
 export type Quad = Array<number>
