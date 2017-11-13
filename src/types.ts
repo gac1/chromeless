@@ -254,3 +254,9 @@ export interface Viewport {
   height: number
   scale: number
 }
+
+export interface S3UploadOptions {
+  public ?: boolean
+  signedPeriod ?: number
+  filename ?: string
+}
