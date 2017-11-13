@@ -52,7 +52,7 @@ export default async (
         channel.publish(TOPIC_END, JSON.stringify({ channelId, chrome: true, ...topic_end_data }), {
           qos: 0,
         }, async () => {
-          channel.end()
+          await channel.end()
 
           await chrome.close()
           await chromeInstance.kill()
