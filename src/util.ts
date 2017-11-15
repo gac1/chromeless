@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as os from 'os'
 import * as path from 'path'
 import * as cuid from 'cuid'
-import { Client, Cookie, DeviceMetrics, PdfOptions, BoxModel, Viewport, Headers } from './types'
+import { Client, Cookie, DeviceMetrics, PdfOptions, BoxModel, Viewport, Headers, S3UploadOptions } from './types'
 import * as CDP from 'chrome-remote-interface'
 import * as AWS from 'aws-sdk'
 
@@ -600,7 +600,7 @@ export async function uploadToS3(data: string, contentType: string, uploadOption
   if (!s3ContentType) {
     throw new Error(`Unknown S3 Content type ${contentType}`)
   }
-  const s3Path = `${getS3ObjectKeyPrefix()}${cuid()}${uploadOptions.filename ? '/${uploadOptions.filename}` : ""}.${s3ContentType.extension}`
+  const s3Path = `${getS3ObjectKeyPrefix()}${cuid()}${uploadOptions.filename ? `/${uploadOptions.filename}` : ""}.${s3ContentType.extension}`
   const s3 = new AWS.S3()
   await s3
         .putObject({
